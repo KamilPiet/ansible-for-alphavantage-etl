@@ -1,7 +1,7 @@
 ---
 
-- name: fetch the latest package list
+- name: Fetch the latest package list
   tags: always
-  apt:
-    update_cache: yes
+  ansible.builtin.apt:
+    update_cache: true
   changed_when: false
