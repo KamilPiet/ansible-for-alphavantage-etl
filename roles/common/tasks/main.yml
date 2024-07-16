@@ -1,0 +1,7 @@
+---
+
+- name: fetch the latest package list
+  tags: always
+  apt:
+    update_cache: yes
+  changed_when: false
