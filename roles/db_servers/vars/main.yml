@@ -1,1 +1,4 @@
 db_servers_postgresql_version: "16"
+db_servers_username: "av_etl"
+db_servers_user_password: "placeholder_password"
+db_servers_database_name: "alphavantage_etl"
