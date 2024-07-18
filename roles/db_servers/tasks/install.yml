@@ -15,7 +15,7 @@
 - name: Install postgresql server
   tags: postgresql
   ansible.builtin.apt:
-    name: postgresql
+    name: postgresql-{{ db_servers_postgresql_version }}
 
 - name: Install acl package
   tags: postgresql
