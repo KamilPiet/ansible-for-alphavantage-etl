@@ -38,4 +38,5 @@
       community.general.sudoers:
         name: ansible
         group: ansible
+        runas: ALL
         commands: ALL
