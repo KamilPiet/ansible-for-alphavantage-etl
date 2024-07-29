@@ -1,0 +1,4 @@
+database_username: "av_etl"
+database_name: "alphavantage_etl"
+
+database_user_password: "placeholder_password"

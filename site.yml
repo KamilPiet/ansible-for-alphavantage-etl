@@ -1,0 +1,22 @@
+---
+
+- name: Run common tasks
+  hosts: all
+  become: true
+  roles:
+    - common
+
+- name: Run db_servers tasks
+  hosts: db_servers
+  become: true
+  vars_files:
+    - vars/global_vars.yml
+  roles:
+    - db_servers
+
+- name: Run web_servers tasks
+  hosts: web_servers
+  vars_files:
+    - vars/global_vars.yml
+  roles:
+    - web_servers

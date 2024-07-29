@@ -1,0 +1,14 @@
+web_servers_repo_path: /home/ansible-0/alphavantage-etl
+web_servers_airflow_home: /home/ansible-0/airflow
+web_servers_working_dir: /home/ansible-0/website
+
+web_servers_airflow_admin_password: placeholder_password_2
+web_servers_airflow_admin_email: placeholder_email@domain.com
+web_servers_airflow_admin_firstname: placeholder_firstname
+web_servers_airflow_admin_lastname: placeholder_lastname
+
+web_servers_api_key: placeholder_api_key
+web_servers_github_token: placeholder_token
+web_servers_git_username: placeholder_username
+web_servers_git_email: placeholder_email@domain.com
+web_servers_git_remote_repo_url: https://github.com/placeholder_username/repo.github.io.git

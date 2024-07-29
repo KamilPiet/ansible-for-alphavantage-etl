@@ -1,0 +1,42 @@
+---
+
+- name: Install updates
+  hosts: all
+  become: true
+  pre_tasks:
+
+    - name: Install updates
+      tags: always
+      ansible.builtin.apt:
+        update_cache: true
+        upgrade: dist
+
+- name: Manage ansible-0 user
+  hosts: all
+  become: true
+  tasks:
+
+    - name: Create ansible group
+      tags: always
+      ansible.builtin.group:
+        name: ansible
+
+    - name: Create ansible-0 user
+      tags: always
+      ansible.builtin.user:
+        name: ansible-0
+        group: ansible
+
+    - name: Add ssh key for ansible-0
+      tags: always
+      ansible.posix.authorized_key:
+        user: ansible-0
+        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGoQfmeYdNDho6L2P4StXUbCMIvknwhkN7neABvi2Df8 ansible"
+
+    - name: Add sudoers file for ansible group
+      tags: always
+      community.general.sudoers:
+        name: ansible
+        group: ansible
+        runas: ALL
+        commands: ALL

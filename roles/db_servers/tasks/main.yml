@@ -1,0 +1,10 @@
+---
+
+- name: Include installation tasks
+  ansible.builtin.include_tasks: roles/db_servers/tasks/install.yml
+
+- name: Include initialization tasks
+  ansible.builtin.include_tasks: roles/db_servers/tasks/initialize.yml
+
+- name: Include configuration tasks
+  ansible.builtin.include_tasks: roles/db_servers/tasks/configure.yml

@@ -1,0 +1,30 @@
+---
+
+- name: Install virtualenv
+  become: true
+  ansible.builtin.apt:
+    name:
+      - python3-virtualenv
+
+- name: Clone the alphavantage-etl repository
+  ansible.builtin.git:
+    repo: https://github.com/KamilPiet/alphavantage-etl.git
+    dest: "{{ web_servers_repo_path }}"
+    version: dev
+
+- name: Create a Python venv and install cmake and setuptools
+  ansible.builtin.pip:
+    virtualenv: "{{ web_servers_repo_path }}/venv"
+    virtualenv_python: python3.12
+    name:
+      - cmake
+      - setuptools
+
+- name: Install the project requirements
+  ansible.builtin.pip:
+    virtualenv: "{{ web_servers_repo_path }}/venv"
+    virtualenv_python: python3.12
+    requirements: "{{ web_servers_repo_path }}/airflow/{{ item.file }}"
+  loop:
+    - file: requirements.txt
+    - file: requirements_2.txt

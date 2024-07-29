@@ -1,0 +1,23 @@
+---
+
+- name: Install dependecies for psycopg2
+  tags: postgresql,python
+  ansible.builtin.apt:
+    name:
+      - libpq-dev
+      - python3-dev
+
+- name: Install psycopg2
+  tags: postgresql,python
+  ansible.builtin.apt:
+    name: python3-psycopg2
+
+- name: Install postgresql server
+  tags: postgresql
+  ansible.builtin.apt:
+    name: postgresql-{{ db_servers_postgresql_version }}
+
+- name: Install acl package
+  tags: postgresql
+  ansible.builtin.apt:
+    name: acl
