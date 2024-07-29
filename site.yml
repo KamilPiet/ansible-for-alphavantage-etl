@@ -9,5 +9,7 @@
 - name: Run db_servers tasks
   hosts: db_servers
   become: true
+  vars_files:
+    - vars/global_vars.yml
   roles:
     - db_servers

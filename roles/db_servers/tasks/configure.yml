@@ -6,9 +6,9 @@
     dest: /etc/postgresql/{{ db_servers_postgresql_version }}/main/pg_hba.conf
     address: 192.168.0.103/32
     contype: host
-    databases: "{{ db_servers_database_name }}"
+    databases: "{{ database_name }}"
     method: md5
-    users: "{{ db_servers_username }}"
+    users: "{{ database_username }}"
   notify: Reload postgresql service
 
 - name: Set "listen_addresses" to "*"
@@ -23,15 +23,15 @@
 - name: Create a postgresql user for the Alpha Vantage ETL database
   tags: postgresql
   community.postgresql.postgresql_user:
-    name: "{{ db_servers_username }}"
-    password: "{{ db_servers_user_password }}"
+    name: "{{ database_username }}"
+    password: "{{ database_user_password }}"
   become: true
   become_user: postgres
 
 - name: Create an Alpha Vantage ETL database
   tags: postgresql
   community.postgresql.postgresql_db:
-    name: "{{ db_servers_database_name }}"
-    owner: "{{ db_servers_username }}"
+    name: "{{ database_name }}"
+    owner: "{{ database_username }}"
   become: true
   become_user: postgres
