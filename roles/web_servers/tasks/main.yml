@@ -1,0 +1,7 @@
+---
+
+- name: Clone the alphavantage-etl repository and install the project requirements
+  ansible.builtin.include_tasks: roles/web_servers/tasks/alphavantage_etl.yml
+
+- name: Install and configure Apache Airflow
+  ansible.builtin.include_tasks: roles/web_servers/tasks/airflow.yml

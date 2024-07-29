@@ -13,3 +13,10 @@
     - vars/global_vars.yml
   roles:
     - db_servers
+
+- name: Run web_servers tasks
+  hosts: web_servers
+  vars_files:
+    - vars/global_vars.yml
+  roles:
+    - web_servers
